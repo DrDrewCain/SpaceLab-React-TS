@@ -1,13 +1,11 @@
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
 
-export const typeDefs = `# Defines the schema for our data model
-  type Query {
-    toi: Float
-  }
+export const typeDefs = 
+`#graphql
+    type Test {
+        id: ID!
+        name: String!
+    }
+    type QueryTest {
+        test: [Test]
+    }
 `;
-
-export const BetaTest = {
-    toi: () => 1.0,
-};
-

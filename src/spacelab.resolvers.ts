@@ -1,8 +1,7 @@
-import { BetaTest } from './spacelab.schemas';
+import { typeDefs } from './spacelab.schemas';
 
-
-const resolvers = {
+export const resolvers = {
     Querytest: {
-        BetaTest: () => BetaTest, // this is the resolver for the Querytest type
+        typeDefs: () => typeDefs, // this is the resolver for the Querytest type
     },
 };

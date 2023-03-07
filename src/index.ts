@@ -1,14 +1,24 @@
 import { ApolloServer } from '@apollo/server';
-import { resolvers } from './spacelab.resolvers';
 import { typeDefs } from './spacelab.schemas';
+import { resolvers } from './spacelab.resolvers';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 
-const server = new ApolloServer ({
+const test = [
+    {
+        id: 1,
+        name: 'Test 1',
+    }
+]
+
+const server = new ApolloServer({
     typeDefs,
     resolvers,
 });
 
-const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
-});
+const {} = startStandaloneServer(server,
+    {
+        listen: { port: 4000}
+    });
+
+    console.log(`🚀 Server ready at ${test}`);
