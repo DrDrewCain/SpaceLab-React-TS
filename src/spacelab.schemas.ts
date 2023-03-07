@@ -1,23 +1,14 @@
-const schema = buildSchema(`
-    input UserInput {
-        email: String!
-        name: String!
-
-    }
-
-    type User {
-        id: Int!
-        name: String!
-        email: String!
-    }
-
-    type Mutation {
-        createUser(input: UserInput): User
-        updateUser(id: Int!, input: UserInput): User
-    }
-
-    type Query {
-        getUser(id: String): User
-        getUsers: [User]
-    }
-`)
+import { gql } from "apollo-server-express"; //will create a schema
+const Schema = gql`
+  type Person {
+    id: ID!
+    name: String
+  }
+  #handle user commands
+  type Query {
+    getAllPeople: [Person] #will return multiple Person instances
+    getPerson(id: Int): Person 
+  }
+`;
+export default Schema; 
+//export this Schema so we can use it in our project

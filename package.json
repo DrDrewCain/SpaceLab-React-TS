@@ -5,7 +5,6 @@
 		"apollo-server-express": "^3.12.0",
 		"class-validator": "^0.14.0",
 		"express": "^4.18.2",
-		"express-graphql": "^0.12.0",
 		"graphql": "^16.6.0",
 		"nodemon": "^2.0.21",
 		"reflect-metadata": "^0.1.13",
@@ -24,5 +23,5 @@
 		"start": "node dist/index.js",
 		"start2": "ts-node src/index.ts",
 		"dev2": "nodemon --exec ts-node src/index.ts"
-	  }
+	}
 }

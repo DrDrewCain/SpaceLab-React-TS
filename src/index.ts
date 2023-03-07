@@ -1,6 +1,6 @@
 import { buildSchema } from "graphql"
-import express from "express"
-import { graphqlHTTP } from "express-graphql"
+import { gql } from "apollo-server-express"; //will create a schema
+import { ApolloServer } from '@apollo/server';
 
 const users = [
     { id: 1, name: "John Doe", email: "johndoe@gmail.com" },
@@ -72,19 +72,19 @@ const root = {
     updateUser,
 }
 
-const app = express()
 
-app.use(
-    "/graphql",
-    graphqlHTTP({
-        schema: schema,
-        rootValue: root,
-        graphiql: true,
-    })
-)
 
-const PORT = 8000
 
-app.listen(PORT)
+const typeDefs = require("./spacelab.schemas");
+const resolvers = require("./spacelab.resolvers");
 
-console.log(`Running a GraphQL API server at http://localhost:${PORT}/graphql`)
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+});
+
+const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
+
+server.().then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`); 
