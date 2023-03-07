@@ -1,14 +1,13 @@
-import { gql } from "apollo-server-express"; //will create a schema
-const Schema = gql`
-  type Person {
-    id: ID!
-    name: String
-  }
-  #handle user commands
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+
+export const typeDefs = `# Defines the schema for our data model
   type Query {
-    getAllPeople: [Person] #will return multiple Person instances
-    getPerson(id: Int): Person 
+    toi: Float
   }
 `;
-export default Schema; 
-//export this Schema so we can use it in our project
+
+export const BetaTest = {
+    toi: () => 1.0,
+};
+
